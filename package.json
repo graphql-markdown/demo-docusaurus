@@ -27,13 +27,13 @@
     "doc": "docusaurus graphql-to-doc"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.5.2",
-    "@docusaurus/preset-classic": "^3.5.2",
-    "@graphql-markdown/docusaurus": "^1.26.0",
-    "@graphql-tools/url-loader": "^8.0.2",
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
+    "@graphql-markdown/docusaurus": "^1.29.1",
+    "@graphql-tools/url-loader": "^8.0.31",
     "@mdx-js/react": "^3.0.0",
-    "graphql": "^16.9.0",
-    "graphql-config": "^5.1.0",
+    "graphql": "^16.11.0",
+    "graphql-config": "^5.1.5",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
