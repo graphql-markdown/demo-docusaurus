@@ -3,7 +3,7 @@
   "description": "GraphQL-Markdown demonstration",
   "keywords": [],
   "homepage": "https://graphql-markdown.github.io",
-  "version": "1.26.0",
+  "version": "1.30.0",
   "private": true,
   "bugs": {
     "url": "https://github.com/graphql-markdown/graphql-markdown/issues"
