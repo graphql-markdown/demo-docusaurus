@@ -11,7 +11,6 @@ const config = {
   url: "https://your-docusaurus-test-site.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "graphql-markdown", // Usually your GitHub org/user name.
   projectName: "graphql-markdown-demo", // Usually your repo name.
