@@ -2,6 +2,8 @@
 
 CodeSandbox demo repository of [GraphQL-Markdown](https://graphql-markdown.dev), a GraphQL documentation generator.
 
+**Live demo:** [graphql-markdown.dev/demo-docusaurus](https://graphql-markdown.dev/demo-docusaurus/)
+
 ## Try it
 
 Use the [CodeSandbox template](https://codesandbox.io/s/github/graphql-markdown/graphql-markdown-demo/tree/main?file=/.graphqlrc) or fork this repository to try with your own GraphQL schema.
