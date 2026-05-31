@@ -8,8 +8,8 @@ const lightCodeTheme = themes.github,
 const config = {
   title: "My GraphQL documentation",
   tagline: "GraphQL-Markdown is cool",
-  url: "https://your-docusaurus-test-site.com",
-  baseUrl: "/",
+  url: "https://graphql-markdown.dev",
+  baseUrl: "/demo-docusaurus/",
   onBrokenLinks: "throw",
   favicon: "img/favicon.ico",
   organizationName: "graphql-markdown", // Usually your GitHub org/user name.
