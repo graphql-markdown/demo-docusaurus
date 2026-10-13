@@ -26,6 +26,8 @@ jobs:
 
       - name: Generate GraphQL docs
         run: npm run doc
+        env:
+          GRAPHQL_MARKDOWN_TELEMETRY_DEBUG: "1"
 
       - name: Build
         run: npm run build
