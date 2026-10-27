@@ -16,6 +16,7 @@ schema: 'https://rickandmortyapi.com/graphql'
 extensions:
   graphql-markdown:
     rootPath: ./docs
+    telemetry: false
     baseURL: /
     homepage: static/index.md
     loaders:
