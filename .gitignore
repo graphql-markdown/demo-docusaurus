@@ -18,3 +18,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Generated GraphQL documentation (npm run doc); the folder itself must
+# exist for Docusaurus' docs plugin, hence the tracked .gitkeep
+/docs/*
+!/docs/.gitkeep
