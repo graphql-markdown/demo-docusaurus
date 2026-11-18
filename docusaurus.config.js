@@ -34,6 +34,9 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        respectPrefersColorScheme: true
+      },
       navbar: {
         title: "GraphQL-Markdown",
         logo: {
@@ -41,6 +44,11 @@ const config = {
           src: "img/graphql-markdown.svg"
         },
         items: [
+          {
+            to: "/intro",
+            label: "Reference",
+            position: "left"
+          },
           {
             href: "https://github.com/graphql-markdown/graphql-markdown",
             label: "GitHub",

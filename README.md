@@ -10,3 +10,10 @@ Use the [CodeSandbox template](https://codesandbox.io/s/github/graphql-markdown/
 
 1. Edit the configuration in `.graphqlrc`
 2. Run `npm run doc` in a new terminal
+3. Run `npm start` to preview the site
+
+## What's included
+
+- `src/pages/index.tsx` — landing page (hero, schema preview, highlights); the generated reference intro lives at `/intro`
+- `src/css/custom.css` — green (Infima default) theme and styling for the generated reference pages
+- `tests/visual/` — Playwright + [Argos](https://argos-ci.com) visual tests (`npm run doc && npm run build && npm run test:visual`)
