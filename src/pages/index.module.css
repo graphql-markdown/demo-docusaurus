@@ -67,10 +67,10 @@
 .previewChip {
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  background: rgb(216 180 254 / 0.1);
+  background: rgb(37 194 160 / 0.1);
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.75rem;
-  color: #d8b4fe;
+  color: #25c2a0;
 }
 
 .previewCode {

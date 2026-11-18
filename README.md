@@ -15,5 +15,5 @@ Use the [CodeSandbox template](https://codesandbox.io/s/github/graphql-markdown/
 ## What's included
 
 - `src/pages/index.tsx` — landing page (hero, schema preview, highlights); the generated reference intro lives at `/intro`
-- `src/css/custom.css` — violet Infima theme and styling for the generated reference pages
+- `src/css/custom.css` — green (Infima default) theme and styling for the generated reference pages
 - `tests/visual/` — Playwright + [Argos](https://argos-ci.com) visual tests (`npm run doc && npm run build && npm run test:visual`)
