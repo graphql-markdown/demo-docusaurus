@@ -1,0 +1,61 @@
+import { expect, test } from "@playwright/test";
+import { argosScreenshot } from "@argos-ci/playwright";
+
+// Paths are relative to the site baseUrl (`/demo-docusaurus/`).
+// One page per GraphQL type kind the reference renders differently.
+const pages = [
+  ["object", "types/objects/project", "Project"],
+  ["enum", "types/enums/project-status", "ProjectStatus"],
+  ["interface", "types/interfaces/node", "Node"],
+  ["union", "types/unions/search-result", "SearchResult"],
+  ["input", "types/inputs/create-project-input", "CreateProjectInput"],
+  ["scalar", "types/scalars/date-time", "DateTime"],
+  ["query", "operations/queries/projects", "projects"],
+  ["mutation", "operations/mutations/create-project", "createProject"],
+  ["subscription", "operations/subscriptions/project-changed", "projectChanged"],
+  ["directive", "types/directives/deprecated", "deprecated"],
+] as const;
+
+// Element screenshots are stitched while scrolling, so the sticky navbar
+// and footer would be painted over the content. Hide them for those shots.
+const hideChrome = "nav.navbar, footer { display: none !important; }";
+
+const article = (page: import("@playwright/test").Page) =>
+  page.locator(".theme-doc-markdown");
+
+test("home", async ({ page }) => {
+  const response = await page.goto("");
+  expect(response?.status()).toBe(200);
+  await expect(page.locator("h1")).toHaveText("Your API, mapped with intent.");
+  await argosScreenshot(page, "home");
+});
+
+for (const [kind, path, title] of pages) {
+  test(`page: ${kind}`, async ({ page }) => {
+    const response = await page.goto(path);
+    expect(response?.status()).toBe(200);
+    await expect(page.locator("h1")).toHaveText(title);
+    await argosScreenshot(page, `page-${kind}`, {
+      element: article(page),
+      argosCSS: hideChrome,
+    });
+  });
+}
+
+test.describe("dark mode", () => {
+  test.use({ colorScheme: "dark" });
+
+  test("home", async ({ page }) => {
+    await page.goto("");
+    await argosScreenshot(page, "home-dark");
+  });
+
+  test("page: object", async ({ page }) => {
+    await page.goto("types/objects/project");
+    await expect(page.locator("h1")).toHaveText("Project");
+    await argosScreenshot(page, "page-object-dark", {
+      element: article(page),
+      argosCSS: hideChrome,
+    });
+  });
+});

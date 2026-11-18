@@ -24,7 +24,8 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "dev": "docusaurus start",
-    "doc": "docusaurus graphql-to-doc"
+    "doc": "docusaurus graphql-to-doc",
+    "test:visual": "playwright test"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.2",
@@ -66,6 +67,9 @@
     "node": ">=22.0"
   },
   "devDependencies": {
-    "@types/eslint": "^9.6.1"
+    "@argos-ci/playwright": "^7.10.0",
+    "@playwright/test": "^1.65.1",
+    "@types/eslint": "^9.6.1",
+    "serve": "^14.2.8"
   }
 }

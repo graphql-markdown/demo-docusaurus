@@ -23,3 +23,9 @@ yarn-error.log*
 # exist for Docusaurus' docs plugin, hence the tracked .gitkeep
 /docs/*
 !/docs/.gitkeep
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
