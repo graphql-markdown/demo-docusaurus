@@ -4,6 +4,14 @@ run-name: "Deploy to GitHub Pages by @${{ github.actor }}"
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+
+# One deploy at a time: a newer merge waits for the running deploy instead of
+# racing it on the gh-pages branch (only the latest pending run is kept).
+concurrency:
+  group: deploy
+  cancel-in-progress: false
 
 jobs:
   deploy:
