@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: read
+  # Argos authenticates through GitHub Actions OIDC, per repository.
+  id-token: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -43,5 +45,3 @@ jobs:
 
       - name: Screenshot and upload to Argos
         run: npm run test:visual
-        env:
-          ARGOS_TOKEN: ${{ secrets.ARGOS_TOKEN }}
