@@ -14,6 +14,13 @@ const config = {
   organizationName: "graphql-markdown", // Usually your GitHub org/user name.
   projectName: "graphql-markdown-demo", // Usually your repo name.
   plugins: ["@graphql-markdown/docusaurus"], // See .graphqlrc for configuration
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({ hashed: true, docsRouteBasePath: "/", indexBlog: false }),
+    ],
+  ],
   presets: [
     [
       "classic",
