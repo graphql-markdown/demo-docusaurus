@@ -1,17 +1,35 @@
-schema: 'https://raw.githubusercontent.com/graphql-markdown/graphql-markdown/main/tests/e2e/__data__/demo_schema.graphql'
-extensions:
-  graphql-markdown:
-    rootPath: ./docs
-    telemetry: false
-    baseURL: /
-    homepage: static/index.md
-    loaders:
-      UrlLoader: '@graphql-tools/url-loader'
-    docOptions:
-      frontMatter:
-        pagination_next: null
-        pagination_prev: null
-        hide_table_of_contents: true
-      index: true
-    printTypeOptions:
-      deprecated: group
+projects:
+  default:
+    schema: 'https://raw.githubusercontent.com/graphql-markdown/graphql-markdown/main/tests/e2e/__data__/demo_schema.graphql'
+    extensions:
+      graphql-markdown:
+        rootPath: ./docs
+        telemetry: false
+        baseURL: /
+        homepage: static/index.md
+        loaders:
+          UrlLoader: '@graphql-tools/url-loader'
+        docOptions:
+          frontMatter:
+            pagination_next: null
+            pagination_prev: null
+            hide_table_of_contents: true
+          index: true
+        printTypeOptions:
+          deprecated: group
+  # Markdown copy of every page, copied into build/ next to its page
+  # (`<page-url>.md`). The formatter is set in docusaurus.config.js.
+  markdown:
+    schema: 'https://raw.githubusercontent.com/graphql-markdown/graphql-markdown/main/tests/e2e/__data__/demo_schema.graphql'
+    extensions:
+      graphql-markdown:
+        rootPath: ./.markdown-copies
+        telemetry: false
+        baseURL: /
+        homepage: false
+        docOptions:
+          sectionHeaderId: false
+        loaders:
+          UrlLoader: '@graphql-tools/url-loader'
+        printTypeOptions:
+          deprecated: group
