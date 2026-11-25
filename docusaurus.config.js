@@ -1,5 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
+const { pathToFileURL } = require("node:url");
 const { themes } = require("prism-react-renderer");
 const lightCodeTheme = themes.github,
   darkCodeTheme = themes.dracula;
@@ -13,7 +14,25 @@ const config = {
   favicon: "img/favicon.ico",
   organizationName: "graphql-markdown", // Usually your GitHub org/user name.
   projectName: "graphql-markdown-demo", // Usually your repo name.
-  plugins: ["@graphql-markdown/docusaurus"], // See .graphqlrc for configuration
+  plugins: [
+    [
+      "@graphql-markdown/docusaurus", // See .graphqlrc for configuration
+      {
+        formatter: pathToFileURL(require.resolve("./lib/formatter.mjs")).href,
+      },
+    ],
+    // Markdown copies: `formatter` must be set in the plugin options, as the
+    // plugin's --formatter default overrides `formatter` from .graphqlrc.
+    [
+      "@graphql-markdown/docusaurus",
+      {
+        id: "markdown",
+        formatter: pathToFileURL(
+          require.resolve("./lib/markdown-copy.mjs"),
+        ).href,
+      },
+    ],
+  ],
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),

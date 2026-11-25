@@ -42,6 +42,36 @@ for (const [kind, path, title] of pages) {
   });
 }
 
+// Each page is also published as plain Markdown next to it: no MDX or HTML spans.
+test("markdown copy", async ({ page }) => {
+  const response = await page.request.get("types/objects/project.md");
+  expect(response.status()).toBe(200);
+  const body = await response.text();
+  expect(body.startsWith("# ")).toBe(true);
+  expect(body).not.toContain("<span");
+});
+
+// Each page links to its copy.
+test("markdown link", async ({ page }) => {
+  await page.goto("types/objects/project");
+  await expect(
+    page.getByRole("link", { name: "View as Markdown" }),
+  ).toHaveAttribute("href", /\/demo-docusaurus\/types\/objects\/project\.md$/);
+});
+
+// Type names in a deprecation reason link to their page.
+test("deprecation reason links to a type page", async ({ page }) => {
+  await page.goto("types/objects/project");
+  const link = page
+    .locator(".theme-admonition", { hasText: "Replaced by" })
+    // Inside the collapsed "deprecated" group: hidden, so not a role query
+    .locator("a", { hasText: "ProjectStatus" });
+  await expect(link).toHaveAttribute(
+    "href",
+    /\/types\/enums\/project-status$/,
+  );
+});
+
 test.describe("dark mode", () => {
   test.use({ colorScheme: "dark" });
 
