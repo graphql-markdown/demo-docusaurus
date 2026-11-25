@@ -72,6 +72,17 @@ test("deprecation reason links to a type page", async ({ page }) => {
   );
 });
 
+// A type-level `@deprecatedType` renders a "Deprecated" notice.
+test("deprecated type notice links to its replacement", async ({ page }) => {
+  await page.goto("types/objects/legacy-project");
+  const notice = page.locator(".theme-admonition", { hasText: "Replaced by" });
+  await expect(notice).toContainText("Deprecated");
+  await expect(notice.locator("a", { hasText: /^Project$/ })).toHaveAttribute(
+    "href",
+    /\/types\/objects\/project$/,
+  );
+});
+
 test.describe("dark mode", () => {
   test.use({ colorScheme: "dark" });
 

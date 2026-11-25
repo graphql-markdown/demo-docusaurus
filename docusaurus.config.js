@@ -1,6 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 const { pathToFileURL } = require("node:url");
+const { decorators } = require("./lib/decorators.mjs");
 const { themes } = require("prism-react-renderer");
 const lightCodeTheme = themes.github,
   darkCodeTheme = themes.dracula;
@@ -19,6 +20,7 @@ const config = {
       "@graphql-markdown/docusaurus", // See .graphqlrc for configuration
       {
         formatter: pathToFileURL(require.resolve("./lib/formatter.mjs")).href,
+        decorators,
       },
     ],
     // Markdown copies: `formatter` must be set in the plugin options, as the
@@ -27,6 +29,7 @@ const config = {
       "@graphql-markdown/docusaurus",
       {
         id: "markdown",
+        decorators,
         formatter: pathToFileURL(
           require.resolve("./lib/markdown-copy.mjs"),
         ).href,
