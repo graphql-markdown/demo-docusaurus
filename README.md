@@ -17,3 +17,12 @@ Use the [CodeSandbox template](https://codesandbox.io/s/github/graphql-markdown/
 - `src/pages/index.tsx` — landing page (hero, schema preview, highlights); the generated reference intro lives at `/intro`
 - `src/css/custom.css` — green (Infima default) theme and styling for the generated reference pages
 - `tests/visual/` — Playwright + [Argos](https://argos-ci.com) visual tests (`npm run doc && npm run build && npm run test:visual`)
+
+## Markdown copies and deprecation links
+
+Each page is also published as plain Markdown next to it (`/types/objects/project` has `/types/objects/project.md`), and ends with a "View as Markdown" link. It follows the [Markdown copies](https://graphql-markdown.dev/docs/guides/markdown-copies) guide:
+
+- `.graphqlrc` has a `markdown` project that renders the same schema into `.markdown-copies/` with `lib/markdown-copy.mjs`, a plain Markdown formatter. `npm run doc` runs both projects.
+- `docusaurus.config.js` registers a second `@graphql-markdown/docusaurus` plugin instance (`id: "markdown"`) and sets both formatters as `file://` URLs.
+- `npm run build` copies `.markdown-copies/` into `build/` after `docusaurus build`.
+- `lib/formatter.mjs` extends the Docusaurus formatter: an `afterRenderTypeEntitiesHook` adds the link (a `pathname://` link, so Docusaurus doesn't resolve the `.md` as a doc or flag it as broken), and a deprecation reason that names a schema type in backticks links to that type's page, following the [Link entities in deprecation reasons](https://graphql-markdown.dev/docs/customize/hooks#link-entities-in-deprecation-reasons) recipe.
